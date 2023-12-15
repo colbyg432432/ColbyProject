@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Golf Stats Tracking - TeeTime</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        
+        header,
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+        }
+        
+        .nav {
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+        .container {
+            width: 80%;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .stats-input,
+        .stats-display {
+            margin-bottom: 30px;
+        }
+        
+        label,
+        input,
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 8px;
+            font-size: 1em;
+        }
+        
+        input[type="number"] {
+            width: 200px;
+            /* Adjust as needed */
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        input[type="number"] {
+            width: 60px;
+            /* Smaller width for number inputs */
+            padding: 5px;
+            margin: 4px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="Website.html">Home</a>
+        <a href="Forums.html">Forums</a>
+        <a href="Stats.html">Stats Tracking Page</a>
+        <a href="aboutus.html">About Us</a>
+    </header>
+
+    <div class="container">
+        <h1>Golf Performance Statistics</h1>
+
+        <!-- Statistics Input Section -->
+        <div class="stats-input">
+            <h2>Enter Round Details</h2>
+            <form id="roundForm">
+                <table>
+                    <tr>
+                        <th>Hole</th>
+                        <th>Par</th>
+                        <th>Your Score</th>
+                        <th>Putts</th>
+                        <th>Fairway Hit</th>
+                        <th>Green in Regulation</th>
+                    </tr>
+                    <!-- Repeat for each hole -->
+                    <tr>
+                        <td>1</td>
+                        <td><input type="number" id="par1" name="par1" min="3" max="5"></td>
+                        <td><input type="number" id="score1" name="score1"></td>
+                        <td><input type="number" id="putts1" name="putts1"></td>
+                        <td>
+                            <select id="fairway1" name="fairway1">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir1" name="gir1">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><input type="number" id="par2" name="par2" min="3" max="5"></td>
+                        <td><input type="number" id="score2" name="score2"></td>
+                        <td><input type="number" id="putts2" name="putts2"></td>
+                        <td>
+                            <select id="fairway2" name="fairway2">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir2" name="gir2">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><input type="number" id="par3" name="par3" min="3" max="5"></td>
+                        <td><input type="number" id="score3" name="score3"></td>
+                        <td><input type="number" id="putts3" name="putts3"></td>
+                        <td>
+                            <select id="fairway3" name="fairway3">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir3" name="gir3">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><input type="number" id="par4" name="par4" min="3" max="5"></td>
+                        <td><input type="number" id="score4" name="score4"></td>
+                        <td><input type="number" id="putts4" name="putts4"></td>
+                        <td>
+                            <select id="fairway4" name="fairway4">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir4" name="gir4">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><input type="number" id="par5" name="par5" min="3" max="5"></td>
+                        <td><input type="number" id="score5" name="score5"></td>
+                        <td><input type="number" id="putts5" name="putts5"></td>
+                        <td>
+                            <select id="fairway5" name="fairway5">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir5" name="gir5">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><input type="number" id="par6" name="par6" min="3" max="5"></td>
+                        <td><input type="number" id="score6" name="score6"></td>
+                        <td><input type="number" id="putts6" name="putts6"></td>
+                        <td>
+                            <select id="fairway6" name="fairway6">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir6" name="gir6">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><input type="number" id="par7" name="par7" min="3" max="5"></td>
+                        <td><input type="number" id="score7" name="score7"></td>
+                        <td><input type="number" id="putts7" name="putts7"></td>
+                        <td>
+                            <select id="fairway7" name="fairway7">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir7" name="gir7">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><input type="number" id="par8" name="par8" min="3" max="5"></td>
+                        <td><input type="number" id="score8" name="score8"></td>
+                        <td><input type="number" id="putts8" name="putts8"></td>
+                        <td>
+                            <select id="fairway8" name="fairway8">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir8" name="gir8">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><input type="number" id="par9" name="par9" min="3" max="5"></td>
+                        <td><input type="number" id="score9" name="score9"></td>
+                        <td><input type="number" id="putts9" name="putts9"></td>
+                        <td>
+                            <select id="fairway9" name="fairway9">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir9" name="gir9">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><input type="number" id="par10" name="par10" min="3" max="5"></td>
+                        <td><input type="number" id="score10" name="score10"></td>
+                        <td><input type="number" id="putts10" name="putts10"></td>
+                        <td>
+                            <select id="fairway10" name="fairway10">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir10" name="gir10">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><input type="number" id="par11" name="par11" min="3" max="5"></td>
+                        <td><input type="number" id="score11" name="score11"></td>
+                        <td><input type="number" id="putts11" name="putts11"></td>
+                        <td>
+                            <select id="fairway11" name="fairway11">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir11" name="gir11">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><input type="number" id="par12" name="par12" min="3" max="5"></td>
+                        <td><input type="number" id="score12" name="score12"></td>
+                        <td><input type="number" id="putts12" name="putts12"></td>
+                        <td>
+                            <select id="fairway12" name="fairway12">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir12" name="gir12">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td><input type="number" id="par13" name="par13" min="3" max="5"></td>
+                        <td><input type="number" id="score13" name="score13"></td>
+                        <td><input type="number" id="putts13" name="putts13"></td>
+                        <td>
+                            <select id="fairway13" name="fairway13">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir13" name="gir13">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td><input type="number" id="par14" name="par14" min="3" max="5"></td>
+                        <td><input type="number" id="score14" name="score14"></td>
+                        <td><input type="number" id="putts14" name="putts14"></td>
+                        <td>
+                            <select id="fairway14" name="fairway14">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir14" name="gir14">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td><input type="number" id="par15" name="par15" min="3" max="5"></td>
+                        <td><input type="number" id="score15" name="score15"></td>
+                        <td><input type="number" id="putts15" name="putts15"></td>
+                        <td>
+                            <select id="fairway15" name="fairway15">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir15" name="gir15">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td><input type="number" id="par16" name="par16" min="3" max="5"></td>
+                        <td><input type="number" id="score16" name="score16"></td>
+                        <td><input type="number" id="putts16" name="putts16"></td>
+                        <td>
+                            <select id="fairway16" name="fairway16">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir16" name="gir16">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td><input type="number" id="par17" name="par17" min="3" max="5"></td>
+                        <td><input type="number" id="score17" name="score17"></td>
+                        <td><input type="number" id="putts17" name="putts17"></td>
+                        <td>
+                            <select id="fairway17" name="fairway17">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir17" name="gir17">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td><input type="number" id="par18" name="par18" min="3" max="5"></td>
+                        <td><input type="number" id="score18" name="score18"></td>
+                        <td><input type="number" id="putts18" name="putts18"></td>
+                        <td>
+                            <select id="fairway18" name="fairway18">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="gir18" name="gir18">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <!-- Repeat for holes 2 through 18 -->
+                </table>
+                <button type="submit">Calculate Stats</button>
+            </form>
+        </div>
+
+        <!-- Display Section for Calculated Stats -->
+        <div class="stats-display">
+            <h2>Your Stats for This Round</h2>
+            <div id="calculatedStats">
+                <!-- Calculated stats will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('roundForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevents the default form submission action
+
+                var totalScore = 0;
+                var totalPar = 0;
+                var totalPutts = 0;
+                var fairwaysHit = 0;
+                var greensInRegulation = 0;
+                var holes = 18;
+
+                for (var i = 1; i <= holes; i++) {
+                    var score = parseInt(document.getElementById('score' + i).value, 10) || 0;
+                    var par = parseInt(document.getElementById('par' + i).value, 10) || 0;
+                    var putts = parseInt(document.getElementById('putts' + i).value, 10) || 0;
+                    var fairway = document.getElementById('fairway' + i).value;
+                    var gir = document.getElementById('gir' + i).value;
+
+                    totalScore += score;
+                    totalPar += par;
+                    totalPutts += putts;
+                    if (fairway === 'Yes') {
+                        fairwaysHit++;
+                    }
+                    if (gir === 'Yes') {
+                        greensInRegulation++;
+                    }
+                }
+
+                var overUnderPar = totalScore - totalPar;
+                var averageScore = totalScore / holes;
+                var averagePutts = totalPutts / holes;
+                var fairwayHitPercentage = (fairwaysHit / holes) * 100;
+                var girPercentage = (greensInRegulation / holes) * 100;
+
+                // Display the results
+                var resultHtml = '<p>Total Score: ' + totalScore + '</p>' +
+                    '<p>Total Par: ' + totalPar + '</p>' +
+                    '<p>Over/Under Par: ' + overUnderPar + '</p>' +
+                    '<p>Average Score per Hole: ' + averageScore.toFixed(2) + '</p>' +
+                    '<p>Average Putts per Hole: ' + averagePutts.toFixed(2) + '</p>' +
+                    '<p>Fairways Hit: ' + fairwaysHit + ' (' + fairwayHitPercentage.toFixed(2) + '%)</p>' +
+                    '<p>Greens in Regulation: ' + greensInRegulation + ' (' + girPercentage.toFixed(2) + '%)</p>';
+
+                document.getElementById('calculatedStats').innerHTML = resultHtml;
+            });
+        });
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
